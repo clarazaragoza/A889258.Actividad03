@@ -34,7 +34,7 @@ namespace A889258.Actividad03
                 Console.Write("\n" + "Ingrese la opción deseada.");
                 Continuar("ingresarla");
 
-                long menuppal = Cuenta.ValidarNumero(0, 4, "Ingrese una opción válida."); 
+                long menuppal = Cuenta.ValidarNumero(0, 4, "Ingrese una opción válida.");
 
                 switch (menuppal)
                 {
@@ -100,71 +100,81 @@ namespace A889258.Actividad03
             Console.WriteLine("\n" + msjOpcion);
 
             var cuenta = PlanDeCuentas.SeleccionarCuenta();
-            cuenta.Mostrar();
-            Console.WriteLine($"Se dispone a dar de baja a {cuenta.TituloEntrada}. ¿Está ud. seguro/a? (S/N)");
-            var key = Console.ReadKey(true);
 
-
-            if (key.Key == ConsoleKey.S)
-            {
-                PlanDeCuentas.Baja(cuenta);
-                Console.WriteLine($"{cuenta.TituloEntrada}. ha sido dado de baja correctamente.");
-                Continuar("volver al Menú Principal.");
-
-            }
-            if (key.Key == ConsoleKey.N)
-            {
-                Continuar("volver al Menú Principal.");
-            }
-
-            else if (key.Key != ConsoleKey.S && key.Key != ConsoleKey.N)
-            {
-                Console.WriteLine("\nERROR: Por favor intente nuevamente ingresando una opción válida.");
-                Continuar("redireccionar al Menú Principal.");
-            }
-        }
-
-        private static void ModificarCuenta(string msjOpcion)
-        {
-            //MODIFICAR CUENTA:
-            Console.WriteLine("\n" + msjOpcion);
-            var cuenta = PlanDeCuentas.SeleccionarCuenta();    //traemos cuenta
             if (cuenta == null)
             {
+                Console.WriteLine("\nLa cuenta indicada no ha sido encontrada.");
                 Continuar("volver al Menú Principal.");
             }
             else
             {
                 cuenta.Mostrar();                                  //mostramos cuenta seleccionada   
-                cuenta.Modificar();                                //modificamos cuenta               
-                Console.Write("\nLa cuenta ha sido modificada correctamente.");     
-                Continuar("volver al Menú Principal.");
+
+                Console.WriteLine($"Se dispone a dar de baja a {cuenta.TituloEntrada}. ¿Está ud. seguro/a? (S/N)");
+                var key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.S)
+                {
+                    PlanDeCuentas.Baja(cuenta);
+                    Console.WriteLine($"{cuenta.TituloEntrada}. ha sido dado de baja correctamente.");
+                    Continuar("volver al Menú Principal.");
+
+                }
+                if (key.Key == ConsoleKey.N)
+                {
+                    Continuar("volver al Menú Principal.");
+                }
+
+                else if (key.Key != ConsoleKey.S && key.Key != ConsoleKey.N)
+                {
+                    Console.WriteLine("\nERROR: Por favor intente nuevamente ingresando una opción válida.");
+                    Continuar("redireccionar al Menú Principal.");
+                }
+
             }
-           
         }
 
-        public static void Continuar(string mensaje)
-        {
-            Console.WriteLine("\n" + "Presione cualquier tecla para " + mensaje + "...");
-            Console.ReadKey();
+            private static void ModificarCuenta(string msjOpcion)
+            {
+                //MODIFICAR CUENTA:
+                Console.WriteLine("\n" + msjOpcion);
+                var cuenta = PlanDeCuentas.SeleccionarCuenta();    //traemos cuenta
+                if (cuenta == null)
+                {
+                    Continuar("volver al Menú Principal.");
+                }
+                else
+                {
+                    cuenta.Mostrar();                                  //mostramos cuenta seleccionada   
+                    cuenta.Modificar();                                //modificamos cuenta               
+                    Console.Write("\nLa cuenta ha sido modificada correctamente.");
+                    Continuar("volver al Menú Principal.");
+                }
+
+            }
+
+            public static void Continuar(string mensaje)
+            {
+                Console.WriteLine("\n" + "Presione cualquier tecla para " + mensaje + "...");
+                Console.ReadKey();
+            }
+
+            public static void SalidaPrograma(string msjOpcion)
+            {
+                Console.WriteLine("\n" + msjOpcion);
+                Console.WriteLine("Muchas gracias por utilizar el Sistema. Hasta la próxima.");
+                Continuar("finalizar");
+                SaludarSistema();
+            }
+
+            public static void SaludarSistema()
+            {
+                Console.WriteLine("\n" + "\t\t\t***************************************************");
+                Console.WriteLine("\t\t\t******Sistema de Gestión: Aplicación Contable******");
+                Console.WriteLine("\t\t\t***************************************************");
+                Console.ReadKey();
+            }
+
+
         }
-
-        public static void SalidaPrograma(string msjOpcion)
-        {
-            Console.WriteLine("\n" + msjOpcion);
-            Console.WriteLine("Muchas gracias por utilizar el Sistema. Hasta la próxima.");
-            Continuar("finalizar");
-            SaludarSistema();
-        }
-
-        public static void SaludarSistema()
-        {
-            Console.WriteLine("\n" + "\t\t\t***************************************************");
-            Console.WriteLine("\t\t\t******Sistema de Gestión: Aplicación Contable******");
-            Console.WriteLine("\t\t\t***************************************************");
-            Console.ReadKey();
-        }
-
-
     }
-}

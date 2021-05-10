@@ -62,7 +62,7 @@ namespace A889258.Actividad03
 
             } while (cuenta.Codigo == 0);
 
-            cuenta.Tipo = ValidarTipoCuenta("Ingrese un tipo de cuenta. (A/P)");
+            cuenta.Tipo = ValidarTipoCuenta("Ingrese un tipo de cuenta. (A/P/PN)");
 
             cuenta.Nombre = IngresoNombre("Ingrese el Nombre de la Cuenta");
 
@@ -195,9 +195,9 @@ namespace A889258.Actividad03
                     Console.WriteLine("El valor ingresado no debe contener números.");
                     continue;
                 }
-                if (ingreso != "P" && ingreso != "A")
+                if (ingreso != "P" && ingreso != "A" && ingreso != "PN")
                 {
-                    Console.WriteLine("Recuerda ingresar una opción de tipo de cuenta válida. (A/P)");
+                    Console.WriteLine("Recuerda ingresar una opción de tipo de cuenta válida. (A/P/PN)");
                     continue;
                 }
                 break;
@@ -217,7 +217,7 @@ namespace A889258.Actividad03
 
                 modelo.Nombre = IngresoNombre("Ingrese el Nombre de la Cuenta", obligatorio: false);
 
-                modelo.Tipo = IngresoTipo("Ingrese el Tipo de Cuenta (A/P)", obligatorio: false);
+                modelo.Tipo = IngresoTipo("Ingrese el Tipo de Cuenta (A/P/PN)", obligatorio: false);
 
                 if (modelo.Codigo == 0 && modelo.Nombre == "" && modelo.Tipo == "")
                 {
@@ -319,9 +319,9 @@ namespace A889258.Actividad03
                     Console.WriteLine("El valor ingresado no debe contener números.");
                     continue;
                 }
-                if (resultado != "P" && resultado != "A")
+                if (resultado != "P" && resultado != "A" && resultado != "PN")
                 {
-                    Console.WriteLine("Recuerda ingresar una opción de tipo de cuenta válida. (A/P)");
+                    Console.WriteLine("Recuerda ingresar una opción de tipo de cuenta válida. (A/P/PN)");
                     continue;
                 }
                 break;
