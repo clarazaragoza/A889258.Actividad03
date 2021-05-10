@@ -9,10 +9,10 @@ namespace A889258.Actividad03
 {
     static class PlanDeCuentas
     {
-        private static readonly Dictionary<int, Cuenta> entradas;
-        private static readonly Dictionary<int, Cuenta> entradasMayor;
-        static readonly string nombreArchivo = "PlanDeCuentas.txt";
-        static readonly string nombreArchivoMayor = "Mayor.txt";
+        private static Dictionary<int, Cuenta> entradas;
+        private static Dictionary<int, Cuenta> entradasMayor;
+        static string nombreArchivo = "PlanDeCuentas.txt";
+        static string nombreArchivoMayor = "Mayor.txt";
 
         public static void Agregar(Cuenta cuenta)
         {
@@ -68,7 +68,7 @@ namespace A889258.Actividad03
                 using (var reader = new StreamReader(nombreArchivo))
                 {
                     while (!reader.EndOfStream)
-                    {
+                    { 
                         var linea = reader.ReadLine();
                         var cuenta = new Cuenta(linea);
 

@@ -36,16 +36,18 @@ namespace A889258.Actividad03
             Codigo = codigo;
         }
 
+
         public string ObtenerLineaDatos()
         {
-            return $"{Codigo}, {Nombre} - {Tipo}";
+            return $"{Codigo}|{Nombre}|{Tipo}";
         }
+
 
         public static Cuenta IngresarNueva()
         {
             var cuenta = new Cuenta();
             Console.WriteLine("Nueva cuenta");
-            
+
             do
             {
                 int codigocuenta = IngresoCodigo("Ingrese un código de cuenta");
@@ -59,7 +61,7 @@ namespace A889258.Actividad03
                 cuenta.Codigo = codigocuenta;
 
             } while (cuenta.Codigo == 0);
-            
+
             cuenta.Tipo = ValidarTipoCuenta("Ingrese un tipo de cuenta. (A/P)");
 
             cuenta.Nombre = IngresoNombre("Ingrese el Nombre de la Cuenta");
